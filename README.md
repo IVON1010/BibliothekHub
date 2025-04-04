@@ -79,15 +79,15 @@ python manage.py migrate
 ```
 ## Set Up Email Backend
 
-### For email notifications to work, you'll need to configure your email settings in the settings.py file. Example (for Gmail):
+For email notifications to work, you'll need to configure your email settings in the settings.py file. Example (for Gmail):
 
-- python
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'your-email@gmail.com'
-EMAIL_HOST_PASSWORD = 'your-email-password'
+-- python
+- EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+- EMAIL_HOST = 'smtp.gmail.com'
+- EMAIL_PORT = 587
+- EMAIL_USE_TLS = True
+- EMAIL_HOST_USER = 'your-email@gmail.com'
+- EMAIL_HOST_PASSWORD = 'your-email-password'
 Note: Replace the EMAIL_HOST_USER and EMAIL_HOST_PASSWORD with your actual email credentials. If you're using Gmail, consider creating an App Password for added security.
 
 ## Run the Development Server
