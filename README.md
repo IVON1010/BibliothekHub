@@ -10,6 +10,8 @@ Welcome to BibliothekHub, a modern, user-friendly online library system built wi
 
 - **Book Return**: Return borrowed books and manage return dates.
 
+- **Email Notifications**: Receive email notifications whenever you borrow or return a book, keeping you informed about your library activities.
+
 - **User Profiles**: Manage personal details and borrowing history.
 
 - **Admin Dashboard**: Library admins can manage books, users, and borrowings with ease.
@@ -25,8 +27,10 @@ Welcome to BibliothekHub, a modern, user-friendly online library system built wi
 
 - **Django Admin**: For easy management of the system’s content, such as books and user data.
 
+- **Email Services**: Configured to send email notifications when a book is borrowed or returned.
+
 ## Installation
-Prerequisites
+### Prerequisites
 Before you begin, ensure that you have the following installed on your machine:
 
 - Python 3.8+
@@ -36,6 +40,8 @@ Before you begin, ensure that you have the following installed on your machine:
 - Django 3.2+
 
 - SQLite (default)
+
+- A working email service (e.g., Gmail) for sending email notifications.
 
 ## Steps to Run the Project Locally
 Clone the Repository
@@ -66,11 +72,24 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-### Apply Migrations
+## Apply Migrations
 
 ```bash
 python manage.py migrate
 ```
+## Set Up Email Backend
+
+### For email notifications to work, you'll need to configure your email settings in the settings.py file. Example (for Gmail):
+
+- python
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'your-email@gmail.com'
+EMAIL_HOST_PASSWORD = 'your-email-password'
+Note: Replace the EMAIL_HOST_USER and EMAIL_HOST_PASSWORD with your actual email credentials. If you're using Gmail, consider creating an App Password for added security.
+
 ## Run the Development Server
 
 ```bash
@@ -80,16 +99,16 @@ python manage.py runserver
 
 Open your browser and navigate to http://127.0.0.1:8000/ to view the application.
 
-## Usage
-- Sign Up / Log In: To start using BibliothekHub, sign up for an account or log in if you already have one.
+Usage
+-**Sign Up / Log In**: To start using BibliothekHub, sign up for an account or log in if you already have one.
 
-- Browse Books: Explore the collection of books available in the library.
+- **Browse Books**: Explore the collection of books available in the library.
 
-- Borrow Books: Select a book to borrow and follow the borrowing process.
+- **Borrow Books**: Select a book to borrow and follow the borrowing process. You will receive an email confirmation after borrowing.
 
-- Track Borrowed Books: Keep track of your borrowed books and their due dates.
+- **Track Borrowed Books**: Keep track of your borrowed books and their due dates.
 
-- Return Books: Return books by their due date and update your records.
+- **Return Books**: Return books by their due date and update your records. An email will notify you when you successfully return a book.
 
 ## Admin Access
 Admins can manage the library by logging into the Django admin dashboard at http://127.0.0.1:8000/admin/ using the superuser credentials.
