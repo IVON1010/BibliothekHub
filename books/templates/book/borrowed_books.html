@@ -16,13 +16,14 @@
     </nav>
 
     <div class="container mt-4">
-        <h2 class="text-center">Your Borrowed Books</h2>
+        <h2 class="text-center">Currently Borrowed Books</h2>
         {% if borrowed_books %}
         <table class="table table-bordered">
             <thead class="table-info">
                 <tr>
                     <th>Title</th>
                     <th>Return Date</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,12 +31,39 @@
                 <tr>
                     <td>{{ borrowed_book.book.title }}</td>
                     <td>{{ borrowed_book.return_date|date:"Y-m-d" }}</td>
+                    <td>
+                        <a href="{% url 'return-book' borrowed_book.id %}" class="btn btn-success btn-sm">Return</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
         {% else %}
         <p class="text-center text-warning">You have not borrowed any books.</p>
+        {% endif %}
+    </div>
+
+    <div class="container mt-5">
+        <h2 class="text-center">Returned Books</h2>
+        {% if returned_books %}
+        <table class="table table-bordered">
+            <thead class="table-secondary">
+                <tr>
+                    <th>Title</th>
+                    <th>Returned Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for returned_book in returned_books %}
+                <tr>
+                    <td>{{ returned_book.book.title }}</td>
+                    <td>{{ returned_book.return_date|date:"Y-m-d" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p class="text-center text-muted">No books have been returned yet.</p>
         {% endif %}
     </div>
 

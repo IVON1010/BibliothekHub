@@ -7,7 +7,7 @@ urlpatterns = [
     path('logout/', user_logout, name='logout'),
     path('borrow/<int:book_id>/', borrow_book, name='borrow_book'),
     path('borrowed/', borrowed_books, name='borrowed_books'),
-    path('return/<int:borrow_id>/', return_book, name='return_book'),
-    path('books/', book_list, name='book-list')
+    path('return/<int:borrow_id>/', return_book, name='return-book'),
+    path('books/', book_list, name='book-list'),
 ]
 
