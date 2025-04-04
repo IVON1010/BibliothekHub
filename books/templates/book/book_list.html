@@ -6,20 +6,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Books</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-</head>
-<body class="bg-light">
+    <style>
+        body {
+            background-color: #F4F6F9;
+            color: #2C3E50; /* Dark text color */
+        }
 
-    <nav class="navbar navbar-dark bg-dark">
+        .navbar {
+            background-color: #34495E;
+        }
+
+        .navbar-brand {
+            color: #ECF0F1;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar a {
+            color: #ECF0F1;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            color: #3498DB;
+        }
+
+        .container {
+            margin-top: 40px;
+        }
+
+        h2 {
+            color: #2C3E50;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* Table Styling */
+        table {
+            background-color: #FFFFFF; /* Light background for the table */
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
+            width: 100%;
+            border: 1px solid #BDC3C7; /* Border color to define the table */
+        }
+
+        /* Table Header Styling */
+        .table thead {
+            background-color: #2980B9;
+            color: #FFFFFF; /* White text for the header */
+        }
+
+        .table th, .table td {
+            color: #2C3E50; /* Dark text color for better contrast */
+        }
+
+        /* Table Row Styling */
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #F9F9F9; /* Slight gray background for odd rows */
+        }
+
+        .table-striped tbody tr:nth-of-type(even) {
+            background-color: #FFFFFF; /* White background for even rows */
+        }
+
+        .btn-custom {
+            background-color: #2980B9;
+            color: white;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 6px;
+            transition: 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #3498DB;
+            transform: scale(1.05);
+        }
+
+        .btn-info {
+            background-color: #3498DB;
+            color: white;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 6px;
+            transition: 0.3s ease;
+        }
+
+        .btn-info:hover {
+            background-color: #2980B9;
+        }
+
+        .btn-secondary {
+            background-color: #7F8C8D;
+            color: white;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .btn-secondary:disabled {
+            background-color: #95A5A6;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-dark">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1">Library System</span>
             <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
         </div>
     </nav>
 
-    <div class="container mt-4">
-        <h2 class="text-center">Available Books</h2>
+    <div class="container">
+        <h2>Available Books</h2>
         <table class="table table-striped">
-            <thead class="table-dark">
+            <thead>
                 <tr>
                     <th>Title</th>
                     <th>Author</th>
@@ -39,7 +144,7 @@
                         {% if book.available_copies > 0 %}
                             <form method="post" action="{% url 'borrow_book' book.id %}">
                                 {% csrf_token %}
-                                <button type="submit" class="btn btn-success">Borrow</button>
+                                <button type="submit" class="btn btn-custom">Borrow</button>
                             </form>
                         {% else %}
                             <button class="btn btn-secondary" disabled>Out of Stock</button>
@@ -54,15 +159,9 @@
             </tbody>
         </table>
 
-        <nav class="navbar navbar-dark bg-dark">
-            <div class="container-fluid">
-                <span class="navbar-brand mb-0 h1">Library System</span>
-                <div>
-                    <a href="{% url 'borrowed_books' %}" class="btn btn-info me-2">My Borrowed Books</a>
-                </div>
-            </div>
-        </nav>
-        
+        <div class="d-flex justify-content-center mt-4">
+            <a href="{% url 'borrowed_books' %}" class="btn btn-info me-2">My Borrowed Books</a>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
