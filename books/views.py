@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404
-from .forms import SignupForm, CustomUserCreationForm
+from .forms import CustomUserCreationForm
 from django.http import HttpResponse
 from django.utils.timezone import now, timedelta
 from .models import Book, BorrowedBook
