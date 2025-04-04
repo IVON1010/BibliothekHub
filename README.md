@@ -29,27 +29,27 @@ Welcome to BibliothekHub, a modern, user-friendly online library system built wi
 Prerequisites
 Before you begin, ensure that you have the following installed on your machine:
 
-Python 3.8+
+- Python 3.8+
 
-pip (Python package manager)
+- pip (Python package manager)
 
-Django 3.2+
+- Django 3.2+
 
-SQLite (default)
+- SQLite (default)
 
-### Steps to Run the Project Locally
+## Steps to Run the Project Locally
 Clone the Repository
 
 ```bash
 git clone https://github.com/IVON1010/BibliothekHub.git
 cd BibliothekHub
 ```
-### Create a Virtual Environment
+## Create a Virtual Environment
 
 ```bash
 python -m venv venv
 ```
-### Activate the Virtual Environment
+## Activate the Virtual Environment
 
 On Windows:
 
@@ -61,21 +61,22 @@ On macOS/Linux:
 ```bash
 source venv/bin/activate
 ```
-### Install Dependencies
+## Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 ### Apply Migrations
 
-bash
+```bash
 python manage.py migrate
-### Run the Development Server
+```
+## Run the Development Server
 
 ```bash
 python manage.py runserver
 ```
-### Visit the Application
+## Visit the Application
 
 Open your browser and navigate to http://127.0.0.1:8000/ to view the application.
 
